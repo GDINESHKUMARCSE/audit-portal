@@ -1,0 +1,69 @@
+<mat-toolbar color="primary" class="app-header">
+  <div>Audit Management Portal</div>
+  <span class="nav-tool-items">
+    <a mat-button routerLink="" routerLinkActive="active">Home</a>
+    <a mat-button mat-raised-button routerLink="/logout" routerLinkActive="active">Logout</a>
+  </span>
+</mat-toolbar>
+<br>
+<br><br>
+<mat-card class="example-card" >
+  <br>
+
+  <mat-toolbar >   <span class="span">PROJECT DETAILS</span></mat-toolbar>
+
+<br>
+<!--  <mat-card-header>-->
+<!--    <mat-card-title>PROJECT DETAILS</mat-card-title>-->
+<!--  </mat-card-header>-->
+
+  <mat-card-content>
+    <form class="example-form" #form="ngForm" novalidate>
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td><div>
+            <mat-form-field>
+              <mat-label>Project name</mat-label>
+              <input matInput placeholder="Enter Project name"  [(ngModel)]="projectName" name="projectName" required>
+            </mat-form-field>
+          </div>
+<!--            <mat-form-field class="example-full-width">-->
+<!--              <input matInput placeholder="Project name" [(ngModel)]="projectName" name="projectName" required>-->
+<!--            </mat-form-field>-->
+          </td>
+        </tr>
+
+        <tr>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>Project Manager name</mat-label>
+            <input matInput placeholder="Enter Project Manager name" [(ngModel)]="projectMangerName" name="projectMangerName" required>
+          </mat-form-field></td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Application Owner</mat-label>
+              <input matInput placeholder="Enter Application Owner name" [(ngModel)]="ApplicationOwner" name="ApplicationOwnerName" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <section class="example-section" mat-align-tabs="left">
+              <label class="example-margin">Audit Type: </label>
+              <mat-radio-group [(ngModel)]="auditType" name="auditType">
+                <mat-radio-button class="example-margin" value="Internal">Internal  </mat-radio-button>
+                <mat-radio-button class="example-margin" value="SOX">SOX</mat-radio-button>
+              </mat-radio-group>
+            </section>
+          </td>
+        </tr>
+      </table>
+    </form>
+    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+  </mat-card-content>
+  <mat-card-actions>
+    <button [disabled]="!form.valid"  mat-raised-button (click)="submitDetails()" color="primary">Submit</button>
+  </mat-card-actions>
+</mat-card>

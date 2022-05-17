@@ -1,0 +1,55 @@
+<mat-toolbar color="primary" class="app-header">
+  <div>Audit Management Portal</div>
+  <span class="nav-tool-items">
+    <a mat-button routerLink="" routerLinkActive="active">Home</a>
+    <a mat-button mat-raised-button routerLink="/logout" routerLinkActive="active">Logout</a>
+  </span>
+</mat-toolbar>
+<br>
+<br><br><br><br><br>
+  <br><br><br><br>
+
+<table mat-table [dataSource] = "auditResponse" width="400" border="2" align="center">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="Project Name" >
+    <th mat-header-cell *matHeaderCellDef > Project Name </th>
+    <td mat-cell *matCellDef="let element" > {{element.projectName}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Manager Name">
+    <th mat-header-cell *matHeaderCellDef> Manger Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.managerName}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Owner Name">
+    <th mat-header-cell *matHeaderCellDef> Owner Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.ownerName}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Audit Type">
+    <th mat-header-cell *matHeaderCellDef> Audit Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.auditType}} </td>
+  </ng-container>
+
+  Audit Type
+  <ng-container matColumnDef="Execution Status">
+    <th mat-header-cell *matHeaderCellDef> Execution Status </th>
+    <td mat-cel *matCellDef="let element" [ngClass]="element.executionStatus == 'GREEN' ? 'change_to_green' : 'change_to_red'">
+     {{element.executionStatus}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Remedial Action">
+    <th mat-header-cell *matHeaderCellDef> Remedial Action </th>
+    <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
